@@ -1,0 +1,791 @@
+/* 
+Orange color: #e67e22
+*/
+
+/* ------------------------------------------ */
+/* BASIC SETUP */
+/* ------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, 
+body {
+  background-color: #fff;
+  color: #555;
+  font-family: "Lato", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  /* clear float after the element; placed in parent that contains floated elements
+  Elements after a floating element will flow around it. Use the "clearfix" hack to fix the problem*/
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+/* ------------------------------------------ */
+/* REUSABLE COMPONENTS */
+/* ------------------------------------------ */
+.row {
+  max-width: 1140px;
+  margin: 0 auto; /*  to center the rows */
+}
+
+section {
+  padding: 80px 0;
+}
+
+.box {
+  padding: 1%;
+}
+
+/* ------HEADINGS----- */
+h1,
+h2,
+h3 {
+  font-weight: 300; /* for big headlines decrease font-weight */
+  text-transform: uppercase;
+}
+
+h1 {
+  color: #fff;
+  font-size: 240%; /* 40px because it doubles the 20px of base size */
+  letter-spacing: 1px;
+  margin: 0 0 20px 0;
+  word-spacing: 4px;
+}
+
+h2 {
+  font-size: 180%;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-align: center;
+  word-spacing: 2px;
+}
+
+h3 {
+  font-size: 110%;
+  margin-bottom: 15px;
+}
+
+h2:after {
+  background-color: #e67e22;
+  content: " ";
+  display: block;
+  height: 2px;
+  margin: 30px auto 0 auto;
+  width: 100px;
+}
+
+/* ------PARAGRAPHS----- */
+.long-copy {
+  line-height: 145%;
+  width: 70%;
+  margin-left: 15%; /* to center the paragraph, since we set width 70%, it remains 30% to split for the margins, 15% each */
+}
+
+.box p {
+  font-size: 90%;
+  line-height: 125%;
+}
+
+/* ------ICONS----- */
+
+.icon-big {
+  color: #e67e22;
+  display: block;
+  font-size: 350%;
+  margin-bottom: 10px;
+}
+
+.icon-small {
+  color: #e67e22;
+  display: inline-block;
+  font-size: 120%;
+  margin-right: 10px;
+  text-align: center;
+  width: 30px;
+
+  /* techniques to align text and icons */
+  line-height: 120%;
+  vertical-align: middle;
+  margin-top: -4px; /* negative margin takes space away */
+}
+
+
+/* ------LINKS---- */
+
+a:link,
+a:visited {
+  color: #e67e22;
+  border-bottom: 1px solid #e67e22;
+  padding-bottom: 1px;
+  transition: border-bottom 0.2s color 0.2s;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  border-bottom: 1px solid transparent;
+  color: #555;
+}
+
+/* ------BUTTONS----- */
+.btn:link,
+.btn:visited,
+input[type=submit] {
+  /* indicates that both visited and not visit buttons will have same style */
+  border: 1px solid #e67e22;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: 300;
+  padding: 10px 30px;
+  text-decoration: none;
+  transition: background-color 0.2s, border 0.2s, color 0.2s; /* when we hover, the color wil not change instantaneously */
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit] {
+  background-color: #e67e22;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+  color: #e67e22;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+  background-color: #cf6d17;
+  border: 1px solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+  color: #fff;
+}
+
+.btn-app:link,
+.btn-app:visited {
+  border: 0;
+}
+
+.btn-app img {
+  height: 50px;
+  margin-right: 10 "" px;
+  width: auto;
+}
+
+/* ------------------------------------------ */
+/* HEADER */
+/* ------------------------------------------ */
+header {
+  background-attachment: fixed;
+  background-image: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)),
+    url("img/hero.jpg");
+  /* linear gradient on the top of image to  increase text visibility*/
+  background-size: cover; /* to see all image */
+  background-position: center;
+  height: 100vh;
+}
+
+.hero-text-box {
+  position: absolute; /* allow to align vertical and horizontally */
+  width: 1140px;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* translates the element half of its height up and left */
+}
+
+.logo {
+  float: left;
+  height: 100px;
+  margin-top: 20px;
+  width: auto;
+}
+
+.logo-black {
+  display: none;
+  float: left;
+  height: 45px;
+  margin: 5px 0;
+  width: auto;
+}
+
+/* Main navi */
+.main-nav {
+  float: right;
+  list-style: none;
+  margin-top: 55px;
+}
+
+.main-nav li {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+  border-bottom: 2px solid transparent;
+  color: #fff;
+  font-size: 90%;
+  padding: 8px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+  border-bottom: 2px solid #e67e22;
+}
+
+/* mobile navi */
+.mobile-nav-icon {
+  cursor: pointer;
+  display: none;
+  float: right;
+  margin-top: 30px;
+}
+
+.mobile-nav-icon ion-icon {
+  color: #fff;
+  font-size: 200%;
+}
+
+#close {
+  cursor: pointer;
+  display: none;
+  float: right;
+  margin-top: 30px;
+  display: none;
+  color: #fff;
+  font-size: 200%;
+}
+
+/* sticky navi */
+.sticky {
+  background-color: rgb(255, 255, 255, 0.98);
+  box-shadow: 0 2px 2px #efefef;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999; /* 9999 is the highest possible value; z-index only works for positioned elements */
+}
+
+.sticky .main-nav {
+  margin-top: 18px;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+  color: #555;
+  padding: 16px 0;
+}
+
+.sticky .logo {
+  display: none;
+}
+
+.sticky .logo-black {
+  display: block;
+}
+
+/* ------------------------------------------ */
+/* FEATURES */
+/* ------------------------------------------ */
+
+.section-features .long-copy {
+  margin-bottom: 30px;
+}
+
+/* ------------------------------------------ */
+/* MEALS */
+/* ------------------------------------------ */
+
+.section-meals {
+  padding: 0;
+}
+
+.meals-showcase {
+  list-style: none;
+  width: 100%;
+}
+
+.meals-showcase li {
+  display: block;
+  float: left;
+  width: 25%; /* to let the 4 elements be in row (100%) */
+}
+
+.meal-photo {
+  background-color: #000; /* the container is dark so the transparency in the images (opacity) makes them darker */
+  margin: 0;
+  overflow: hidden; /* used in this container to not show the images that exceed the browser due to scale(1.15) */
+  width: 100%;
+}
+
+.meal-photo img {
+  height: auto;
+  opacity: 0.7;
+  transform: scale(1.15);
+  transition: transform 0.5s opacity 0.5s;
+  width: 100%;
+}
+
+.meal-photo img:hover {
+  opacity: 1;
+  transform: scale(1.03); /* is not 1 to cover a white line beneath the img */
+}
+
+/* ------------------------------------------ */
+/* HOW IT WORKS */
+/* ------------------------------------------ */
+
+.section-steps {
+  background-color: #f4f4f4;
+}
+
+.steps-box:first-child {
+  /* selects the first element inside the step-box */
+  margin-top: 30px;
+  padding-right: 3%; /* % due to responsiveness web design */
+  text-align: right; /* text-align:  works for all inline-block elements; */
+}
+
+.steps-box:last-child {
+  margin-top: 50px;
+  padding-left: 3%;
+}
+
+.app-screen {
+  width: 40%;
+}
+
+.works-step {
+  margin-bottom: 50px;
+}
+
+.works-step:last-of-type {
+  /* target only the last woks-step element */
+  margin-bottom: 80px;
+}
+
+.works-step div {
+  border: 2px solid #e67e22;
+  border-radius: 50%;
+  color: #e67e22;
+  display: inline-block;
+  font-size: 150%;
+  float: left;
+  height: 55px;
+  margin-right: 25px;
+  padding: 5px;
+  text-align: center;
+  width: 55px;
+}
+
+/* ------------------------------------------ */
+/* CITIES */
+/* ------------------------------------------ */
+
+.box img {
+  height: auto;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.city-feature {
+  margin-bottom: 5px;
+}
+
+/* ------------------------------------------ */
+/* TESTIMONIALS */
+/* ------------------------------------------ */
+
+.section-testimonials {
+  background-attachment: fixed;
+  background-image: linear-gradient(rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8)), url('./img/back-customers.jpg');
+  background-size: cover;
+  color: #fff;  
+}
+
+blockquote {
+  font-style: italic;
+  line-height: 145%;
+  padding: 1.5%;
+  position: relative;
+}
+
+blockquote:before {
+  content: "\201C";
+  display: block;
+  font-size: 500%;
+  position: absolute;
+  top: -5px;
+  left: -3px;
+}
+
+cite {
+  display: block;
+  font-size: 90%;
+  margin-top: 25px;
+}
+
+cite img {
+  border-radius: 50%;
+  font-weight: 250;
+  height: 45px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* ------------------------------------------ */
+/* PRICING PLANS */
+/* ------------------------------------------ */
+
+.section-plans {
+  background-color: #f4f4f4;
+}
+
+.plan-box {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-left: 5%; 
+  width: 90%;
+}
+
+.plan-box div {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 15px;
+}
+
+.plan-box div:first-child {
+  background-color: #fcfcfc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.plan-box div:last-child {
+  border-bottom: none;
+  box-shadow: 0 2px 2px #efefef;
+  text-align: center;
+}
+
+.plan-price {  
+  color: #e67e22;
+  font-size: 300%;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+.plan-price span {
+  color: #e67e22;
+  font-size: 30%; /* in %, it corresponds to the percentage of its parent, not to the initial 20px */
+  font-weight: 300;
+}
+
+.plan-price-meal {
+  font-size: 80%;
+}
+
+.plan-box ul {
+  list-style: none;
+}
+
+.plan-box li {
+  padding: 5px 0;
+}
+
+
+/* ------------------------------------------ */
+/* FORM */
+/* ------------------------------------------ */
+
+.contact-form {
+  margin: 0 auto;
+  width: 60%;
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #555;
+  font-family: "Lato", "Arial", sans-serif;
+  padding: 7px;
+  width: 100%;
+}
+
+textarea {
+  height: 200px;
+  resize: none;
+}
+
+input[type=checkbox] {
+  margin: 10px 5px 10px 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+/* ------------------------------------------ */
+/* FOOTER */
+/* ------------------------------------------ */
+
+footer {
+  background-color: #333;
+  font-size: 80%;
+  padding: 60px;
+}
+
+.footer-nav {
+  float: left;
+  list-style: none;
+}
+
+.social-links {
+  float: right;
+  list-style: none;
+}
+
+.footer-nav li,
+.social-links li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+  margin: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+  border: none;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-nav li:hover,
+.footer-nav li:active {
+  color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+  font-size: 160%;
+}
+
+.social-links li a ion-icon[name=logo-facebook]
+.social-links li a ion-icon[name=logo-twitter],
+.social-links li a ion-icon[name=logo-Google],
+.social-links li a ion-icon[name=logo-instagram] {
+  transition: color  0.2s;
+}
+
+.social-links li a ion-icon[name=logo-facebook]:hover, 
+.social-links li a ion-icon[name=logo-facebook]:active {
+  color: #3b5998;
+}
+
+.social-links li a ion-icon[name=logo-twitter]:hover, 
+.social-links li a ion-icon[name=logo-twitter]:active {
+  color: #00aced;
+}
+
+
+.social-links li a ion-icon[name=logo-Google]:hover, 
+.social-links li a ion-icon[name=logo-Google]:active {
+  color: #dd4b39;
+}
+
+
+.social-links li a ion-icon[name=logo-instagram]:hover, 
+.social-links li a ion-icon[name=logo-instagram]:active {
+  color: #517fa4;
+}
+
+footer p { 
+  color: #888;
+  font-size: 90%;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* ------------------------------------------ */
+/* ANIMATIONS */
+/* ------------------------------------------ */
+
+.js--wp-1, 
+.js--wp-2,
+.js--wp-3  {
+  animation-duration: 1s;
+  opacity: 0;
+}
+
+.js--wp-34  {
+  animation-duration: 1s;
+}
+
+.js--wp-1.animated,
+.js--wp-2.animated,
+.js--wp-3.animated {
+  opacity: 1;
+}
+
+/* ------------------------------------------ */
+/* PIZZA CARD */
+/* ------------------------------------------ */
+
+.section-pizza {
+  background: linear-gradient(to bottom right, #67b26f, #4ca2cd);
+  color: #444;
+  padding: 50px;
+
+  /* 3 main properties for containers */
+
+  display: flex; /* thus, .pizza will be a flex item of this container */
+  align-items: center; /* align in cross axis */
+  justify-content: center; /* align in cross axis */
+}
+
+.pizza {
+  display: flex ;
+  align-items: stretch;  /* to align the items relatively to the cross axis (horizontally)*/
+  max-width: 800px;
+  border-radius: 4px;
+  box-shadow: 0 30px 80px 10px rgba(0,0,0,.2);
+  overflow: hidden;
+}
+
+.pizza__img {
+  display: block;
+  width: 100%;
+}
+
+.pizza__hero {
+  background: #fff;
+  flex: 0 1 45%; /* grow shrink basis ( length); the element does not grow or shrink but has a length */
+/* flex-basis: 45% would have the same result */
+}
+
+.pizza__content {
+  background: #fff;
+  padding: 35px 30px;
+  flex: 1; /* allows the element to grow the remaining width in the container */
+/* flex-length: 1 would have the same result */
+
+  display: flex;
+  flex-direction: column; /* the default is row; here it uniformly displays its items side-by-side horizontally */
+  /* align-items: center;  *//* as the cross axis is now the horizontal axis (due to  flex-direction: column), the items will be horizontal aligned*/
+  /* justify-content: center; */ /* aligns in this case top to bottom */
+}
+
+
+.pizza__price {
+  flex: 0 1 auto;
+  /*align-self: center;  */ /*togiveadifferentbehaviour/alignmenttooneelement*/
+  background: linear-gradient(to bottom, #67b26f, #4ca2cd);
+  writing-mode: vertical-rl; /* allow to change text orientation */
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
+  color: #fff;
+
+  display: flex; /* thus, .pizza will also be a container  container */
+  align-items: center; 
+  justify-content: center; 
+}
+
+.pizza__title {
+  display: flex; 
+  align-items: center;
+ /*  justify-content: center; */
+ margin-bottom: 20px;
+}
+
+.pizza__heading {
+  font-size: 100%;
+  color: #000;
+  text-transform: none;
+  /* flex: 1;  */ /* expands the element to all the available space and pushes the tags to the right side */
+  margin-right: auto; /* occupies all the extra space with the margin */
+  margin-bottom: 0;
+}
+
+.pizza__tag {
+  font-size: 60%;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  margin-left: 7px;  
+}
+
+.pizza__tag--1{
+  background-color: #67b26f;
+}
+
+.pizza__tag--2{
+  background-color: #4ca2cd;
+}
+
+.pizza__description{
+  font-size: 70%;
+
+}
+
+.pizza__details {
+  display: flex;
+  /* justify-content: space-between; */ /* uniformly divides the space between the component */
+  margin-top: auto; /* due to display flex of its container, occupies all the space left with margin, and so the element is pushed below */
+  
+}
+
+.pizza__detail {
+  font-size: 75%;
+  text-transform: uppercase;
+  margin-right: 20px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+}
+
+.pizza__emoji {
+  font-size: 80%;
+  margin-right: 3px;
+}
+
